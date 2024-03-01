@@ -1,8 +1,11 @@
 {
   "name": "weather-widget",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "main": "src/index.tsx",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -24,5 +27,8 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "typescript": "^5.2.2",
     "vite": "^5.1.4"
-  }
+  },
+  "sideEffects": [
+    "./src/**/*.css"
+  ]
 }
