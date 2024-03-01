@@ -1,7 +1,9 @@
-import { WeatherData } from '../../types';
+import { TransformedWeatherData, WeatherData } from '../../types';
 import { findIcon } from '../findIcon';
 
-export const transformData = (weather: WeatherData) => {
+export const transformData: (w: WeatherData) => TransformedWeatherData = (
+  weather: WeatherData,
+) => {
   //location
   const nearestLocation = weather.nearest_area[0];
   const area = nearestLocation.areaName[0].value;

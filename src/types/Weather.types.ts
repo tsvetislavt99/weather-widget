@@ -35,3 +35,47 @@ export type Weather = {
   date: string;
   condition: string;
 };
+
+export interface TransformedWeatherData {
+  location: {
+    area: string;
+    region: string;
+    country: string;
+  };
+  data: {
+    cloudCover: string;
+    windSpeed: string;
+    humidity: string;
+    temp: string;
+    feelsLike: string;
+    date: string;
+    condition: string;
+  };
+  today: {
+    date: string;
+    avgTemp: string;
+    maxTemp: string;
+    minTemp: string;
+    sunHour: string;
+    uvIndex: string;
+    moonPhase: string;
+  };
+  tomorrow: {
+    date: string;
+    avgTemp: string;
+    maxTemp: string;
+    minTemp: string;
+    sunHour: string;
+    uvIndex: string;
+    moonPhase: string;
+  };
+  afterTomorrow: {
+    date: string;
+    avgTemp: string;
+    maxTemp: string;
+    minTemp: string;
+    sunHour: string;
+    uvIndex: string;
+    moonPhase: string;
+  };
+}
