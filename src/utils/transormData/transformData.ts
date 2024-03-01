@@ -1,7 +1,7 @@
-import { Weather } from '../../types';
+import { WeatherData } from '../../types';
 import { findIcon } from '../findIcon';
 
-export const transformData = (weather: Weather) => {
+export const transformData = (weather: WeatherData) => {
   //location
   const nearestLocation = weather.nearest_area[0];
   const area = nearestLocation.areaName[0].value;
@@ -22,8 +22,8 @@ export const transformData = (weather: Weather) => {
     .join('-');
   const weatherCode = currCondition.weatherCode;
   const description = findIcon(weatherCode);
-  const icon = description[1];
-  const conditionArr = description[0].match(/[A-Z][a-z]+/g);
+  const icon = description?.[1] ?? '';
+  const conditionArr = description?.[0].match(/[A-Z][a-z]+/g);
   const condition = icon + ' ' + conditionArr?.join(' ');
 
   //today

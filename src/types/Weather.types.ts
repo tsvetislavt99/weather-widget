@@ -1,4 +1,4 @@
-export type Weather = {
+export type WeatherData = {
   nearest_area: Array<{
     areaName: Array<{ value: string }>;
     region: Array<{ value: string }>;
@@ -24,4 +24,14 @@ export type Weather = {
       moon_phase: string;
     }>;
   }>;
+};
+
+export type Weather = {
+  cloudCover: string;
+  windSpeed: string;
+  humidity: string;
+  temp: string;
+  feelsLike: string;
+  date: string;
+  condition: string;
 };
