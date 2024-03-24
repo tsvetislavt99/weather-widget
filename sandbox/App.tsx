@@ -11,14 +11,28 @@ import './App.css';
 import '../src/index.css';
 
 export default function App() {
-  const [location, setLocation] = useState('Pleven');
+  const [location, setLocation] = useState('Moscow');
+  const [currLocation, setCurrLocation] = useState<any>();
   const [weather, setWeather] = useState<TransformedWeatherData>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://wttr.in/${location}?format=j1`)
+    if (!currLocation && 'geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setCurrLocation({
+          lat: position.coords.latitude,
+          long: position.coords.longitude,
+        });
+      });
+    }
+    console.log(currLocation, `${currLocation?.lat},${currLocation?.long}`);
+    fetch(
+      `https://wttr.in/${
+        currLocation ? `${currLocation.lat},${currLocation.long}` : location
+      }?format=j1`,
+    )
       .then((res) => res.json())
       .then((result) => {
         const transformedData = transformData(result);
@@ -29,7 +43,7 @@ export default function App() {
       .catch(() => {
         setError(true);
       });
-  }, [location]);
+  }, [location, currLocation]);
 
   return (
     <>
